@@ -14,10 +14,10 @@ amount.addEventListener("input", () => {
     amount.value = amount.value.replace(hasCaracteresRegex, "")
 })
 
-form.submit = function(event) {
+form.addEventListener("submit", function(event) {
     event.preventDefault()
 
-    switch(currency.value){
+    switch (currency.value) {
         case "USD":
             convertCurrency(amount.value, USD, "US$")
             break
@@ -28,7 +28,7 @@ form.submit = function(event) {
             convertCurrency(amount.value, GBP, "£")
             break
     }
-}
+})
 
 function convertCurrency(amount, price, symbol){
     try{
@@ -48,7 +48,7 @@ function convertCurrency(amount, price, symbol){
 
 function formatCurrencyBRL(value){
     return Number(value).toLocaleString("pt-BR", {
-        style: currency,
-        currency: BRL
+        style: "currency",
+        currency: "BRL"
     })
 }
